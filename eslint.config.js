@@ -12,10 +12,16 @@ import jsxally from 'eslint-plugin-jsx-a11y';
 import prettier from 'eslint-config-prettier';
 
 export default tseslint.config({
-  extends: [js.configs.recommended, ...tseslint.configs.strictTypeChecked],
+  extends: [
+    js.configs.recommended,
+    ...tseslint.configs.strictTypeChecked,
+    ...tseslint.configs.strictTypeChecked,
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
   files: ['**/*.{ts,tsx}'],
   ignores: ['dist'],
   languageOptions: {
+    parser: tseslint.parser,
     ecmaVersion: 'latest',
     globals: globals.browser,
     parserOptions: {
@@ -24,18 +30,14 @@ export default tseslint.config({
       ecmaFeatures: {
         jsx: true,
       },
-      requireConfigFile: false,
       project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      babelOptions: {
-        presets: ['@babel/preset-react', '@babel/preset-typescript'],
-      },
       tsconfigRootDir: import.meta.dirname,
     },
   },
   plugins: {
     'react-hooks': reactHooks,
     'react-refresh': reactRefresh,
-    'typescript-eslint': tseslint,
+    '@typescript-eslint': tseslint.plugin,
     prettier: eslintPluginPrettier,
     import: importEslint,
     vitest: vitest,

@@ -1,2 +1,2 @@
-export * from './auth';
+export * from '../pages/auth/view';
 export * from './supabase';
