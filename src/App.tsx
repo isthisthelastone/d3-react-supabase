@@ -1,19 +1,24 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import { ReactComponent as ReactLogo } from './assets/react.svg';
+import { ReactComponent as ViteLogo } from './assets/vite.svg';
 import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
+  console.log(ReactLogo);
 
   return (
     <>
-      <div>
+      <div
+        className={
+          'flex gap-4 flex-dir flex-1 justify-center w-[100vw] h-[100vh]'
+        }
+      >
         <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
+          <ViteLogo className="flex flex-1 justify-center w-[100vw] h-[100vh]" />
         </a>
         <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+          <ReactLogo className="flex flex-1 justify-center w-[100vw] h-[100vh]" />
         </a>
       </div>
       <h1>Vite + React</h1>
